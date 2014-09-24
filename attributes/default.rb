@@ -7,8 +7,8 @@ case node['kernel']['machine']
     default['monit']['arc'] = "x86"
 end
 
+default['monit']['binary_url'] = 'http://mmonit.com/monit/dist/binary'
 default['monit']['binaries'] = "monit-#{node['monit']['version']}-#{node['os']}-#{node['monit']['arc']}"
-
 
 default['monit']['dir'] = '/etc/monit'
 default['monit']['bin_base'] = '/usr/local'

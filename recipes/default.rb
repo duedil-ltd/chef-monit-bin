@@ -34,8 +34,16 @@ else
     mode 0755
   end
 
-  cookbook_file "/etc/default/monit" do
-    source "monit_default"
+  if node[:init_package] == "systemd" then
+    cookbook_file "/etc/default/monit" do
+      source "monit_default_sysvinit"
+      notifies :restart, "service[monit]"
+    end
+  else
+    cookbook_file "/etc/default/monit" do
+      source "monit_default"
+      notifies :restart, "service[monit]"
+    end
   end
 end
 
